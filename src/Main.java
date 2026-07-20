@@ -19,7 +19,7 @@ void main(){
       pstmt.setInt(1,sno);
       pstmt.setString(2,sname);
       pstmt.setFloat(3,cgpa);
-      rows =pstmt.executeUpdate();
+      rows =rows+pstmt.executeUpdate();
     }
     if (rows>0){
       System.out.println(rows+"Rows Inserted");
