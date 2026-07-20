@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.*;
 void main(){
   try{
     Scanner sc=new Scanner(System.in);
@@ -10,10 +11,10 @@ void main(){
     int sno = sc.nextInt();
     System.out.println("Enter Student CGPA:");
     float cgpa = sc.nextFloat();
-    PreparedStatement pstmt=con.PreparedStatement("insert into student values(?,?,?)");
+    PreparedStatement pstmt=con.prepareStatement("insert into student values(?,?,?)");
     pstmt.setInt(1,sno);
     pstmt.setString(2,sname);
-    pstmt.setfloat(3,cgpa);
+    pstmt.setFloat(3,cgpa);
     int rows =pstmt.executeUpdate();
     if (rows>0){
       System.out.println(rows+"Rows Inserted");
@@ -21,7 +22,7 @@ void main(){
     else{
       System.out.println("Insert Failed");
     }
-    stmt.close();
+    pstmt.close();
     con.close();
   }
   catch(Exception e){
